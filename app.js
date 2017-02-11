@@ -33,17 +33,14 @@ function findByName(name) {
 	return false;
 }
 
-/*
-var inok=false;
-var jsok=false;
-var cwok=false;
-*/
 var jss, htmls, cowss, uphs, upjs;
 
-var users = [new User('dood','pass'), new User('kewldood','pass')];
+var users = [new User('AdamNieto','pass'), new User('JohnVanAtta','pass'), new User('HarryWoodoworth', 'pass'), new User('PeterGoldman', 'pass')];
 
 users[0].msubs.push(users[1].uname);
 users[0].osubs.push(users[1].uname);
+users[0].msubs.push(users[2].uname);
+users[0].osubs.push(users[3].uname);
 
 fs.readFile('./index.html', 'utf8', function (err, html) {
     if (err) {
@@ -116,6 +113,9 @@ http.createServer(function(request, response) {
     		
 			response.write(newpage);  
 			response.end(); 
+    	} else {
+    		response.write("404");
+    		response.end();  
     	}
     }
     
