@@ -116,7 +116,7 @@ users[2].msubs.push(users[0]);
 users[2].msubs.push(users[3]);
 //users[2].msubs.push(users[4]);
 //users[2].msubs.push(users[5]);
-users[2].forwd.push(users[1]);
+//users[2].forwd.push(users[1]);
 //users[2].forwd.push(users[2]);
 //users[2].forwd.push(users[3]);
 users[2].forwd.push(users[4]);
@@ -128,7 +128,7 @@ users[3].msubs.push(users[2]);
 //users[3].msubs.push(users[3]);
 users[3].msubs.push(users[4]);
 //users[3].msubs.push(users[5]);
-users[3].forwd.push(users[1]);
+//users[3].forwd.push(users[1]);
 //users[3].forwd.push(users[2]);
 //users[3].forwd.push(users[3]);
 //users[3].forwd.push(users[4]);
@@ -394,7 +394,7 @@ function cmailjs() {
 	resp.end();
 }
 
-var seid=0, lin;
+var seid=0, lin, emailn="";
 
 http.createServer(function(request, response) {
 	if (request.method == 'POST') {
@@ -466,6 +466,8 @@ http.createServer(function(request, response) {
 					
 					//console.log(seid);
 				}
+			} else if (body[0]=='f') {
+				emailn = body.substr(2);
 			} else if (body[0]=='e') {
 				var cr = findByKey(seid);
 
@@ -513,6 +515,8 @@ http.createServer(function(request, response) {
 				var r2 = ['famspam.py', body.substr(2)];
 				
 				r2.push(cr.uname);
+				
+				r2.push(emailn);
 
 				for (i=0;i<recipients.length;i++) {
 					if (recipients[i].email!=null) r2.push(recipients[i].email);

@@ -62,6 +62,10 @@ document.getElementById("phome").addEventListener("click", function() {
 document.getElementById("trigger").addEventListener("click", function() {
 	console.log(document.getElementById("text").value);
 
+	post="f ";
+	post+=document.getElementById("name").value;
+	Goto();
+	
 	post="e ";
 	post+=document.getElementById("text").value;
 	Goto();
