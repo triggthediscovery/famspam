@@ -29,7 +29,7 @@ function Goto() {
 	}
 }
 
-document.getElementById("homep").addEventListener("click", function() {
+document.getElementById("phome").addEventListener("click", function() {
 	window.location = ABCDEF;
 });
 

@@ -316,6 +316,43 @@ function Upagejs() {
 	} 
 }
 
+function Homepagejs() {
+	var msubs = "";
+	var forwd = "";
+
+	for (i=0; i<users.length; i++) {
+		var cr = findByKey(seid);
+
+		cr = findByName(cr.uname);
+		
+		var out = 0;
+		
+		if (cr != false) {
+			var gogo1 = findByNameArr(users[i].uname,cr.forwd);
+			var gogo2 = findByNameArr(users[i].uname,cr.msubs);
+			var gogo3 = findByNameArr(users[i].uname,cr.block);
+
+			if (gogo1 != false) out=1;
+			if (gogo2 != false) out=2;
+			if (gogo3 != false) out=3;
+		}
+		
+		var d = Math.round(Math.random()*(users.length-1));
+		
+		msubs += ("new User('" + users[d].uname + "'," + out + ",'','" + users[d].image + "',''),");
+		
+		d = Math.round(Math.random()*(users.length-1));
+		
+		forwd += ("new User('" + users[d].uname + "'," + out + ",'','" + users[d].image + "',''),");
+	}
+
+	newpage = get.replace("123456789",msubs);
+	newpage = newpage.replace("987654321",forwd);
+	
+	resp.write(newpage);  
+	resp.end();
+}
+
 function Loginjs() {
 	var pos = rurl.search("login");
 
@@ -378,6 +415,9 @@ http.createServer(function(request, response) {
         	//console.log(body);
 
         	if (use!=false) {
+        		console.log(body);
+
+        	
         		var rea = findByName(body.substr(11));
         	
         		if (body[9]=='1') {
@@ -404,102 +444,100 @@ http.createServer(function(request, response) {
         					use.block.splice(i,1);
         				}
         			}
-        		}
-        	} else {
-        		
-        	
-        		if (body[0]=='u') {
-        			lin = findByName(body.substr(2));
-        		} else if (body[0]=='p') {
-        			//console.log(lin.psswd);
-        			//console.log(body.substr(2));
-        		
-        			if (lin.psswd==body.substr(2)) {
-        				var cow = Math.random();
-        				cow = (cow-.01)*100000000;
-        				cow = Math.round(cow);
-        				
-        				sessionID.push(new SeidKey(cow,lin.uname));
-        				
-        				seid=cow;
-        				
-        				//console.log(seid);
-        			}
-        		} else if (body[0]=='e') {
-        			var cr = findByKey(seid);
+        		} 
+    		} else if (body[0]=='u') {
+    			//console.log("usen");
+    			//console.log(body.substr(2));
+    		
+				lin = findByName(body.substr(2));
+			} else if (body[0]=='p') {
+				//console.log("pass");
+				//console.log(lin.psswd);
+				//console.log(body.substr(2));
+			
+				if (lin.psswd==body.substr(2)) {
+					var cow = Math.random();
+					cow = (cow-.01)*100000000;
+					cow = Math.round(cow);
+					
+					sessionID.push(new SeidKey(cow,lin.uname));
+					
+					seid=cow;
+					
+					//console.log(seid);
+				}
+			} else if (body[0]=='e') {
+				var cr = findByKey(seid);
 
-					cr = findByName(cr.uname);
-        		
-        			var spawn = require('child_process').spawn;
-        			var recipients = [];
-        			
-        			var myeval = [cr];
-        			
-        			//console.log(cr);
+				cr = findByName(cr.uname);
+			
+				var spawn = require('child_process').spawn;
+				var recipients = [];
+				
+				var myeval = [cr];
+				
+				//console.log(cr);
 
-        			for (i=0;i<users.length;i++) {
-        				if (findByNameArr(cr.uname,users[i].forwd) != false) {
-        					
-        					//console.log(users[i]);
-        					if (findByNameArr(users[i].uname,recipients) == false) {
-        						//console.log(users[i]);
-        						recipients.push(users[i]);
-        					}
-        					myeval.push(users[i]);
-        				}
-        			}
-        			
-        			for (i=0;i<users.length;i++) {
-        				for (b=0;b<users[i].msubs.length;b++) {
-        					for (c=0;c<myeval.length;c++) {
-								if (users[i].msubs[b] == myeval[c]) {
-									//console.log(users[i].msubs[b]);
-									if (findByNameArr(users[i].msubs[b].uname,recipients) == false) {
-										//console.log(users[i].msubs[b]);
-										recipients.push(users[i].msubs[b]);
-									}
-								}
-		    				}
-		    			}
-        			}
-        			
-        			for (i=0;i<recipients.length;i++) {
-    					if (findByNameArr(cr.uname,recipients[i].block) != false) {
-							recipients[i]=null;
+				for (i=0;i<users.length;i++) {
+					if (findByNameArr(cr.uname,users[i].forwd) != false) {
+						
+						//console.log(users[i]);
+						if (findByNameArr(users[i].uname,recipients) == false) {
+							//console.log(users[i]);
+							recipients.push(users[i]);
 						}
-        			}
-        			
-        			var r2 = ['famspam.py', body.substr(2)];
+						myeval.push(users[i]);
+					}
+				}
+				
+				for (i=0;i<users.length;i++) {
+					for (b=0;b<users[i].msubs.length;b++) {
+						for (c=0;c<myeval.length;c++) {
+							if (users[i].msubs[b] == myeval[c]) {
+								//console.log(users[i].msubs[b]);
+								if (findByNameArr(users[i].msubs[b].uname,recipients) == false) {
+									//console.log(users[i].msubs[b]);
+									recipients.push(users[i].msubs[b]);
+								}
+							}
+						}
+					}
+				}
+				
+				for (i=0;i<recipients.length;i++) {
+					if (findByNameArr(cr.uname,recipients[i].block) != false) {
+						recipients[i]=null;
+					}
+				}
+				
+				var r2 = ['famspam.py', body.substr(2)];
 
-        			for (i=0;i<recipients.length;i++) {
-        				if (recipients[i].email!=null) r2.push(recipients[i].email);
-        			}
-        			
-        			console.log(r2);
+				for (i=0;i<recipients.length;i++) {
+					if (recipients[i].email!=null) r2.push(recipients[i].email);
+				}
+				
+				console.log(r2);
 
-					py    = spawn('python', r2),
-					data = [1,2,3,4,5,6,7,8,9],
-					dataString = '';
+				py    = spawn('python', r2),
+				data = [1,2,3,4,5,6,7,8,9],
+				dataString = '';
 
-					py.stdout.on('data', function(data){
-					  dataString += data.toString();
-					});
-					py.stdout.on('end', function(){
-					  console.log('response: ',dataString);
-					});
-					py.stdin.write(JSON.stringify(data));
-					py.stdin.end();
-        		} else if (body[0]=='o') {
-        			seid=0;
-        		}
-        	}
-        
-            //console.log(body);
+				py.stdout.on('data', function(data){
+				  dataString += data.toString();
+				});
+				py.stdout.on('end', function(){
+				  console.log('response: ',dataString);
+				});
+				py.stdin.write(JSON.stringify(data));
+				py.stdin.end();
+    		} else if (body[0]=='o') {
+    			seid=0;
+    		}
         });
 	} else {
 		resp=response;
 	
-		console.log(request.url);
+		//console.log(request.url);
 	
 		//seid=0;
 
@@ -521,8 +559,15 @@ http.createServer(function(request, response) {
 
 		returnp=Paste;
 
-		if (request.url==("/")) get=fs.readFileSync('./index.html', 'utf8');
-		if (request.url==("/cows")) get=fs.readFileSync('./cows.html', 'utf8');
+		//if (request.url==("/")) get=fs.readFileSync('./index.html', 'utf8');
+		//if (request.url==("/cows")) get=fs.readFileSync('./cows.html', 'utf8');
+		if (request.url.includes("/") && !request.url.includes("js")) {
+			get=fs.readFileSync('./homepage.html', 'utf8');
+		}
+		if (request.url.includes("/homepage.js")) {
+			get=fs.readFileSync('./homepage.js', 'utf8');
+			returnp=Homepagejs;
+		}
 		if (request.url.includes("/login") && !request.url.includes("js")) {
 			get=fs.readFileSync('./login.html', 'utf8');
 		}

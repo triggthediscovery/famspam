@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>User Page</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/lib/w3.css">
@@ -15,19 +15,20 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 <body class="w3-dark-grey">
 
 <!-- Sidenav (hidden by default) -->
-<nav class="w3-grey w3-sidenav w3-card-2 w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:20%;min-width:100px" id="mySidenav">
+<nav class="w3-grey w3-sidenav w3-card-2 w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:12%;min-width:100px" id="mySidenav">
   <a href="javascript:void(0)" onclick="w3_close()"
-  class="w3-closenav"><i class="fa fa-arrow-left fa-2x"></i></a>
-  <a id="phome">Home</a>
-  <a id="cmail">Cmail</a>
+  class="w3-closenav"><i class="fa fa-arrow-left fa-3x w3-padding-large"></i></a>
+  <a id="phome"><i class="fa fa-home fa-3x w3-padding-large"></i></a>
+  <a id="cmail"><i class="fa fa-envelope-open fa-3x w3-padding-large"></i></a>
+  <a id="dash" href="/"><i class="fa fa-th fa-3x w3-padding-large"></i></a>
 </nav>
 
 <!-- Top menu -->
 <div class="w3-top">
-  <div class="w3-light-grey w3-xlarge w3-padding-xlarge" style="max-width:1200px;margin:auto">
+  <div class="w3-grey w3-xlarge w3-padding-xlarge" style="max-width:1200px;margin:auto">
     <div class="w3-opennav w3-left w3-hover-text-grey" onclick="w3_open()">☰</div>
     <div id="logger" class="w3-right">ABCDEF</div>
-    <div class="w3-center">FamSpam</div>
+    <div class="w3-center" href="/">FamSlam</div>
   </div>
 </div>
 
@@ -40,7 +41,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     <!-- Left Column -->
     <div class="w3-third">
     
-      <div class="w3-grey w3-text-dark-grey w3-card-4">
+      <div class="w3-blue-grey w3-text-dark-grey w3-card-4">
      	<div class="w3-container w3-text-black">
         	<h2 id="upagen">Jane Doe</h2>
         </div>
@@ -69,7 +70,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     <!-- Right Column -->
     <div class="w3-twothird">
     
-      <div class="w3-container w3-card-2 w3-grey w3-margin-bottom" >
+      <div class="w3-container w3-card-2 w3-blue-grey w3-margin-bottom" >
         <h4 class="w3-text-black w3-margin-0 w3-padding-16">Subscribed</h4> 
           <div class="w3-half w3-row-padding w3-padding-0 w3-margin-bottom w3-center" id="food">
 			<div id="tl" style="margin-top:80px" class="w3-third  w3-grey">
@@ -138,7 +139,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     
     </div>
     
-    <div class="w3-container w3-card-2 w3-grey w3-margin-bottom">
+    <div class="w3-container w3-card-2 w3-blue-grey w3-margin-bottom">
         <h4 class="w3-text-black w3-margin-0 w3-padding-16">Forwarding</h4> 
           <div class="w3-half w3-row-padding w3-padding-0 w3-margin-bottom w3-center" id="food">
 			<div id="bl" style="margin-top:80px" class="w3-third  w3-grey">
@@ -220,7 +221,7 @@ function w3_close() {
 }
 </script>
 
-<footer class="w3-container w3-light-grey w3-center w3-margin-top">
+<footer class="w3-container w3-grey w3-center w3-margin-top">
   <p>Find us on social media.</p>
   <i class="fa fa-facebook-official w3-hover-text-indigo w3-large"></i>
   <i class="fa fa-instagram w3-hover-text-purple w3-large"></i>

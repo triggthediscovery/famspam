@@ -33,8 +33,6 @@ var User = function User(uname, relat, email, image, descr){
 var subs = [123456789];
 var subd = [987654321];
 
-var pageu = 11223344;
-
 var place1=0;
 var place2=0;
 
@@ -81,16 +79,6 @@ document.getElementById("cmail").addEventListener("click", function() {
 function update() { 
 	if (place1<0) place1=0;
 	if (place2<0) place2=0;
-
-	GodHelp("f0","s0","b0",pageu);
-	GodHelp("f1","s1","b1",subs[0+place1]);
-	GodHelp("f2","s2","b2",subs[1+place1]);
-	GodHelp("f3","s3","b3",subs[2+place1]);
-	GodHelp("f4","s4","b4",subs[3+place1]);
-	GodHelp("f5","s5","b5",subd[0+place2]);
-	GodHelp("f6","s6","b6",subd[1+place2]);
-	GodHelp("f7","s7","b7",subd[2+place2]);
-	GodHelp("f8","s8","b8",subd[3+place2]);	
 
 	if (subs.length-place1>0) {
 		document.getElementById("pic1").src = subs[0+place1].image;
@@ -151,10 +139,6 @@ function update() {
 	}
 }
 
-document.getElementById("upagep").src = pageu.image;
-document.getElementById("upagen").innerHTML = pageu.uname;
-document.getElementById("description").innerHTML = pageu.descr;
-
 update();
 
 document.getElementById("phome").addEventListener("click", function() {
@@ -177,7 +161,7 @@ document.getElementById("br").addEventListener("click", function() {
 
 var base = window.location.href.lastIndexOf("upage");
 
-var urs = window.location.href.substr(0,base+6);
+var urs = window.location.href.substr(0,base+6) + "/upage/";
 
 document.getElementById("pic1").addEventListener("click", function() {
 	window.location = urs + subs[0+place1].uname + '/seid' + seid.toString();
@@ -242,6 +226,14 @@ function GodHelp(n1, n2, n3, ob) {
 		document.getElementById(n3).className=document.getElementById(n3).className.replace("w3-white","w3-black");
 	}
 }
+GodHelp("f1","s1","b1",subs[0+place1]);
+GodHelp("f2","s2","b2",subs[1+place1]);
+GodHelp("f3","s3","b3",subs[2+place1]);
+GodHelp("f4","s4","b4",subs[3+place1]);
+GodHelp("f5","s5","b5",subd[0+place2]);
+GodHelp("f6","s6","b6",subd[1+place2]);
+GodHelp("f7","s7","b7",subd[2+place2]);
+GodHelp("f8","s8","b8",subd[3+place2]);
 
 if (seid!=0) {
 	document.getElementById("f0").addEventListener("click", function() {
