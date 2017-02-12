@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/lib/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+</style>
+
+
+
+<body class="w3-dark-grey">
+
+<!-- Sidenav (hidden by default) -->
+<nav class="w3-grey w3-sidenav w3-card-2 w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:20%;min-width:100px" id="mySidenav">
+  <a href="javascript:void(0)" onclick="w3_close()"
+  class="w3-closenav"><i class="fa fa-arrow-left fa-2x"></i></a>
+  <a id="homep">Home</a>
+  <a id="cmail">cmail</a>
+</nav>
+
+<!-- Top menu -->
+<div class="w3-top">
+  <div class="w3-light-grey w3-xlarge w3-padding-xlarge" style="max-width:1200px;margin:auto">
+    <div class="w3-opennav w3-left w3-hover-text-grey" onclick="w3_open()">☰</div>
+    <div id="logger" class="w3-right">ABCDEF</div>
+    <div class="w3-center">FamSpam</div>
+  </div>
+</div>
+
+<!-- Page Container -->
+<div class="w3-content" style="max-width:1400px;margin-top:96px">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+  
+    <!-- Left Column -->
+    <div class="w3-third w3-center">
+		.
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-third w3-center">
+		<div class="w3-grey w3-row-padding">
+			<form class="w3-container">
+				<label>abcdef</label>
+				<label>username</label>
+				<input id="username" class="w3-input w3-border-0" type="text">
+
+				<label>password</label>
+				<input id="password" type="password" class="w3-input w3-border-0 w3-margin-bottom">
+				
+				<button id="trigger" class="w3-btn w3-blue-grey w3-margin-bottom">Login</button>
+			</form> 
+		</div>
+    </div>
+    
+    <div class="w3-third w3-center">
+		.
+    </div>
+    
+	<!-- End Grid -->
+  </div>
+  
+  <!-- End Page Container -->
+</div>
+
+<script>
+// Script to open and close sidenav
+function w3_open() {
+    document.getElementById("mySidenav").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidenav").style.display = "none";
+}
+</script>
+
+<footer class="w3-container w3-light-grey w3-center w3-margin-top">
+  <p>Find us on social media.</p>
+  <i class="fa fa-facebook-official w3-hover-text-indigo w3-large"></i>
+  <i class="fa fa-instagram w3-hover-text-purple w3-large"></i>
+  <i class="fa fa-snapchat w3-hover-text-yellow w3-large"></i>
+  <i class="fa fa-pinterest-p w3-hover-text-red w3-large"></i>
+  <i class="fa fa-twitter w3-hover-text-light-blue w3-large"></i>
+  <i class="fa fa-linkedin w3-hover-text-indigo w3-large"></i>
+  <p>Powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+
+<script src="login.js"></script>
+
+</body>
+</html>
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
