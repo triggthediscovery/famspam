@@ -511,6 +511,8 @@ http.createServer(function(request, response) {
 				}
 				
 				var r2 = ['famspam.py', body.substr(2)];
+				
+				r2.push(cr.uname);
 
 				for (i=0;i<recipients.length;i++) {
 					if (recipients[i].email!=null) r2.push(recipients[i].email);

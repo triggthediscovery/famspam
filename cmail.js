@@ -52,7 +52,7 @@ function Goto() {
 	}
 }
 
-document.getElementById("homep").addEventListener("click", function() {
+document.getElementById("phome").addEventListener("click", function() {
 	var base = window.location.href.lastIndexOf("cmail");
 	var urs = window.location.href.substr(0,base);
 
